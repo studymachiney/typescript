@@ -15,7 +15,7 @@
 */
 
 /* _____________ 你的代码 _____________ */
-
+// todo
 type Permutation<T, U = T> = [U] extends [never]
     ? []
     : T extends never
