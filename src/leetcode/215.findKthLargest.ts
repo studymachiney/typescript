@@ -1,4 +1,19 @@
-//快速选择，基于快速排序的选择方法
+// 给定整数数组 nums 和整数 k，请返回数组中第 k 个最大的元素。
+
+// 请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
+
+//
+
+// 示例 1:
+
+// 输入: [3,2,1,5,6,4] 和 k = 2
+// 输出: 5
+// 示例 2:
+
+// 输入: [3,2,3,1,2,4,5,5,6] 和 k = 4
+// 输出: 4
+
+// 快速选择，基于快速排序的选择方法
 ;(() => {
     function findKthLargest(nums: number[], k: number): number {
         k = nums.length - k
@@ -46,45 +61,45 @@
         // swap(nums, more, r)
         // return more
     }
+    function swap(nums: number[], i: number, j: number) {
+        let temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
+    }
     console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2))
 })()
 
+// 基于堆排序的选择方法
 ;(() => {
-    function findKthLargest(nums: number[], k: number) {
+    function findKthLargest(nums: number[], k: number): number {
         let heapSize = nums.length
-        buildMaxHeap(nums, heapSize)
-        for(let i = nums.length - 1; i >= nums.length - k + 1; i--) {
-            swap(nums, 0, i)
-            heapSize--
-            maxHeapify(nums, 0, heapSize)
+        for (let i = heapSize - 1; i >= 0; i--) {
+            heapify(nums, i, heapSize)
+        }
+        while (heapSize - 1 > nums.length - k) {
+            swap(nums, 0, --heapSize)
+            heapify(nums, 0, heapSize)
         }
         return nums[0]
     }
-    function buildMaxHeap(nums: number[], heapSize: number) {
-        for (let i = Math.floor(heapSize / 2); i >= 0; --i) {
-            maxHeapify(nums, i, heapSize)
+    function heapify(nums: number[], index: number, heapSize: number) {
+        let left = index * 2 + 1
+        while (left < heapSize) {
+            let largest =
+                left + 1 < heapSize && nums[left + 1] > nums[left]
+                    ? left + 1
+                    : left
+            largest = nums[largest] > nums[index] ? largest : index
+            if (largest === index) break
+            swap(nums, index, largest)
+            index = largest
+            left = index * 2 + 1
         }
     }
-    function maxHeapify(nums: number[], i: number, heapSize: number) {
-        let l = i * 2 + 1,
-            r = i * 2 + 2,
-            largest = i
-        if (l < heapSize && nums[l] > nums[largest]) {
-            largest = l
-        }
-        if (r < heapSize && nums[r] > nums[largest]) {
-            largest = r
-        }
-        if (largest !== i) {
-            swap(nums, i, largest)
-            maxHeapify(nums, largest, heapSize)
-        }
+    function swap(nums: number[], i: number, j: number) {
+        let temp = nums[i]
+        nums[i] = nums[j]
+        nums[j] = temp
     }
     console.log(findKthLargest([3, 2, 1, 5, 6, 4], 2))
 })()
-
-function swap(nums: number[], i: number, j: number) {
-    let temp = nums[i]
-    nums[i] = nums[j]
-    nums[j] = temp
-}
