@@ -38,7 +38,7 @@
 // 快速排序
 ;(() => {
     function quickSort(arr: number[], l: number, r: number) {
-        while (l < r) {
+        if (l < r) {
             let p = partition(arr, l, r)
             quickSort(arr, l, p[0] - 1)
             quickSort(arr, p[1] + 1, r)
