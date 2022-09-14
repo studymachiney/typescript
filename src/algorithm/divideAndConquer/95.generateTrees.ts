@@ -1,4 +1,4 @@
-import { TreeNode } from '../tree/tree'
+import { TreeNode } from '../structure/tree'
 ;(() => {
     function generateTrees(n: number): Array<TreeNode | null> {
         return getTree(1, n)

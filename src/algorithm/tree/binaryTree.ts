@@ -1,4 +1,4 @@
-import { TreeNode, createTree } from './tree'
+import { TreeNode, createTree } from '../structure/tree'
 
 // 二叉树的遍历
 ;(() => {

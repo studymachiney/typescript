@@ -1,5 +1,5 @@
 // 求一棵二叉树的宽度（不统计null节点）
-import { createTree, TreeNode } from './tree'
+import { createTree, TreeNode } from '../structure/tree'
 ;(() => {
     function widthOfBinaryTree(root: TreeNode): number {
         if (root === null) return 0

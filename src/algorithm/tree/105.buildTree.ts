@@ -1,4 +1,4 @@
-import { TreeNode } from './tree'
+import { TreeNode } from '../structure/tree'
 ;(() => {
     const indexMap = new Map<number, number>()
     function buildTree(preorder: number[], inorder: number[]): TreeNode | null {

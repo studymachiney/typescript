@@ -1,4 +1,4 @@
-import { createTree, TreeNode } from './tree'
+import { createTree, TreeNode } from '../structure/tree'
 ;(() => {
     let path:number[] = []
     let ret:number[][] = []

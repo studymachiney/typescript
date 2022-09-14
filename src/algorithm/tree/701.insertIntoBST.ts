@@ -1,4 +1,4 @@
-import { createTree, getTreeVal, TreeNode } from './tree'
+import { createTree, getTreeVal, TreeNode } from '../structure/tree'
 
 function insertIntoBST(root: TreeNode | null, val: number): TreeNode {
     if (root === null) return new TreeNode(val)

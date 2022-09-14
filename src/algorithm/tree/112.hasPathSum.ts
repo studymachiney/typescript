@@ -23,7 +23,7 @@
 // 输出：false
 // 解释：由于树是空的，所以不存在根节点到叶子节点的路径。
 
-import { createTree, TreeNode } from './tree'
+import { createTree, TreeNode } from '../structure/tree'
 ;(() => {
     function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
         if (root === null) return false
